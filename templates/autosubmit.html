@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Prevent switching tabs and exiting full screen
+        document.addEventListener('visibilitychange', function () {
+            if (document.visibilityState === 'hidden') {
+                alert('Please do not switch tabs. Your test will be automatically submitted.');
+                submitTest();
+            }
+        });
+
+        document.addEventListener('fullscreenchange', function () {
+            if (!document.fullscreenElement) {
+                alert('Please do not exit full screen. Your test will be automatically submitted.');
+                submitTest();
+            }
+        });
+
+
+        function submitTest() {
+            alert('Test submitted.');
+            // You can make an AJAX request to the Flask server to submit the test
+            // For simplicity, let's redirect to the server route for test submission
+            window.location.href = '/submit';
+        }
+    </script>
+</body>
+</html>

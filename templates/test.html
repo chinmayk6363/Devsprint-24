@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Paper</title>
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: medium;
+      background-color: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh
+    }
+
+
+
+    #quiz-container1,#quiz-container2 {
+      background-color: #fff;
+      border-radius: 8px;
+      font-size: medium;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 50px;
+      width: 1600px;
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction:column-reverse;
+      align-items: center;
+      height: 100vh
+
+    }
+
+    #quiz-container2 {
+      align-self: flex-end;
+      justify-content: space-between;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+
+    .options label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="radio"] {
+      margin-right: 5px;
+    }
+
+    input[type="submit"] {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    #timer-button {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      padding: 10px 20px;
+      background-color: #2196F3;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        ol {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+         window.addEventListener("beforeunload", function (event) {
+            // Customize the confirmation message
+            var confirmationMessage = "Are you sure you want to end the test? Your progress may be lost.";
+
+
+            // For legacy browsers
+            event.returnValue = confirmationMessage;
+
+            // For modern browsers
+            return confirmationMessage;
+        });
+
+
+    </script>
+</head>
+<body>
+    <div id="fullscreen">
+        <button id="fullscreen-btn" >Begin </button>
+    </div>
+    <button  id="timer-button">Time Remaining</button>
+    <script>
+  var timerDuration = 0.1;
+  var timer = timerDuration * 60;
+
+  function startTimer() {
+    var countdown = setInterval(function() {
+      var minutes = Math.floor(timer / 60);
+      var seconds = timer % 60;
+
+      document.getElementById("timer-button").innerText = `${minutes}:${seconds} Remaining`;
+
+      if (timer > 0) {
+        timer--;
+      } else {
+        clearInterval(countdown);
+        document.getElementById("timer-button").innerText = "Time Expired";
+        submitTest();
+      }
+    }, 1000);
+  }
+
+  window.onload = startTimer;
+
+        const fullscreenBtn = document.getElementById('fullscreen-btn');
+
+        fullscreenBtn.addEventListener('click', () => {
+            toggleFullscreen();
+        });
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        // Listen for fullscreen change event
+        document.addEventListener('fullscreenchange', () => {
+            updateButtonState();
+        });
+
+        function updateButtonState() {
+            fullscreenBtn.textContent = document.fullscreenElement ? 'Exit Fullscreen' : 'Toggle Fullscreen';
+        }
+
+        // Prevent switching tabs and exit full screen
+        document.addEventListener('visibilitychange', function () {
+            if (document.visibilityState === 'hidden') {
+                alert('Please do not switch tabs. Your test will be automatically submitted.');
+                submitTest();
+            }
+        });
+
+        function submitTest() {
+            alert('Test submitted.');
+            // Submit the form
+            document.querySelector('form').submit();
+        }
+    </script>
+
+    <h1>Test Paper</h1>
+
+    <form action="/submit" method="post">
+        <div class="question">
+      <p>1. What is the capital of France?</p>
+      <div class="options">
+        <label><input type="radio" name="q1" value="a">a) Paris</label>
+        <label><input type="radio" name="q1" value="b">b) Rome</label>
+        <label><input type="radio" name="q1" value="c">c) Berlin</label><label><input type="radio" name="q1" value="c">c) Berlin</label>
+      </div>
+    </div>
+<div class="question">
+      <p>1. What is the capital of France?</p>
+      <div class="options">
+        <label><input type="radio" name="q1" value="a">a) Paris</label>
+        <label><input type="radio" name="q1" value="b">b) Rome</label>
+        <label><input type="radio" name="q1" value="c">c) Berlin</label><label><input type="radio" name="q1" value="c">c) Berlin</label>
+      </div>
+    </div>
+<div class="question">
+      <p>1. What is the capital of France?</p>
+      <div class="options">
+        <label><input type="radio" name="q1" value="a">a) Paris</label>
+        <label><input type="radio" name="q1" value="b">b) Rome</label>
+        <label><input type="radio" name="q1" value="c">c) Berlin</label><label><input type="radio" name="q1" value="c">c) Berlin</label>
+      </div>
+    </div>
+<div class="question">
+      <p>1. What is the capital of France?</p>
+      <div class="options">
+        <label><input type="radio" name="q1" value="a">a) Paris</label>
+        <label><input type="radio" name="q1" value="b">b) Rome</label>
+        <label><input type="radio" name="q1" value="c">c) Berlin</label><label><input type="radio" name="q1" value="c">c) Berlin</label>
+      </div>
+    </div>
+<div class="question">
+      <p>1. What is the capital of France?</p>
+      <div class="options">
+        <label><input type="radio" name="q1" value="a">a) Paris</label>
+        <label><input type="radio" name="q1" value="b">b) Rome</label>
+        <label><input type="radio" name="q1" value="c">c) Berlin</label><label><input type="radio" name="q1" value="c">c) Berlin</label>
+      </div>
+    </div>
+<div class="question">
+      <p>1. What is the capital of France?</p>
+      <div class="options">
+        <label><input type="radio" name="q1" value="a">a) Paris</label>
+        <label><input type="radio" name="q1" value="b">b) Rome</label>
+        <label><input type="radio" name="q1" value="c">c) Berlin</label><label><input type="radio" name="q1" value="c">c) Berlin</label>
+      </div>
+    </div>
+
+        <button type="submit">Submit Answers</button>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test nav</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+<style>
+    body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+  }
+
+  form {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+
+  h1 {
+    color: #333;
+  }
+
+  p {
+    color: #555;
+  }
+
+  ol {
+    color: #333;
+    padding-left: 20px;
+  }
+
+  li {
+    margin-bottom: 10px;
+  }
+
+  input[type="radio"] {
+    margin-bottom: 15px;
+  }
+
+  button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+
+  }
+
+  button:hover {
+    background-color: #45a049;
+
+  }
+  .test{
+
+    display: flexbox;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+</head>
+<body>
+<div class="test" >
+<form action="/test" method="post" >
+  <h1 align="center">Test Instructions</h1>
+
+    <p>Before you begin the test, please read and follow the instructions carefully:</p>
+
+    <ol>
+        <li>Ensure that you have a stable internet connection throughout the duration of the test.</li>
+        <li>Answer all questions. There is no penalty for guessing, so it's in your best interest to attempt every question.</li>
+        <li>Read each question thoroughly before selecting your answer. Pay attention to any specific instructions provided.</li>
+        <li>For multiple-choice questions, select the best answer by clicking on the corresponding radio button.</li>
+        <li>Once you select an answer, it cannot be changed, so choose carefully.</li>
+        <li>Be mindful of the time. You will have a limited amount of time to complete the test, as indicated at the beginning.</li>
+        <li>Do not use any external resources, notes, or calculators unless explicitly allowed.</li>
+        <li>Click the "Submit Answers" button at the end of the test to finalize your responses. Once submitted, you cannot make further changes.</li>
+        <li>If you experience technical issues, inform the exam proctor immediately if applicable.</li>
+        <li>Stay calm and focused. Good luck!</li>
+    </ol>
+    <input type="checkbox" required> I agree to all the conditions! <br></input>
+   <div align="center" ><button type="submit" class="start-test-button">Start test</button></div>
+
+</form>
+</div>
+
+</body>
+</html>

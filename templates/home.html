@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for i in applicants %}
+<h2>{{ i }}</h2>
+{% endfor %}
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .details-container {
+            display: none;
+        }
+
+        .details-container.active {
+            display: block;
+        }
+
+        .details-container p {
+            margin: 0;
+        }
+
+        .btn-details {
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Job Portal</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>User Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John Doe</td>
+                <td><button class="btn-details" onclick="showDetails('john-doe')">See Details</button></td>
+            </tr>
+            <!-- Add more rows with user data as needed -->
+        </tbody>
+    </table>
+
+    {% for i in applicants %}
+    <div id="john-doe-details" class="details-container">
+        <h2>Details for John Doe</h2>
+        <p>Email: {{ i }}</p>
+        <p>Phone: 123-456-7890</p>
+        <!-- Add more details as needed -->
+    </div>
+{% endfor %}
+    <script>
+        function showDetails(userId) {
+            // Hide all details containers
+            const detailsContainers = document.querySelectorAll('.details-container');
+            detailsContainers.forEach(container => container.classList.remove('active'));
+
+            // Show the details container for the selected user
+            const selectedContainer = document.getElementById(${userId}-details);
+            selectedContainer.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
